@@ -12,10 +12,12 @@ namespace CmsDbEFCodeFirst
     {
         static void Main(string[] args)
         {
+            //Initialize as well 
 
             using (var context = new BankDbContext())
             {
-                context.Database.Migrate();
+                var initializer = new DatabaseInitializer();
+                initializer.Initialize(context);
             }
 
             using (var context = new BankDbContext())
